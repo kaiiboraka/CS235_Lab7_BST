@@ -21,11 +21,16 @@ NodeInterface* BST::getRootNode() const
 
 bool BST::add(int data)
 {
-	Node* nodeToFind = SearchBST(root, data);
+	return insertNode(root, data);
+}
+
+bool BST::insertNode(Node*& nodeToFind, int key)
+{
+	nodeToFind = SearchBST(nodeToFind, key);
 	if (nodeToFind == nullptr)
 	{
-		nodeToFind = new Node(data);
-		
+		nodeToFind = new Node(key);
+		//cout << "successfully added " << key << " to the tree" << endl;
 		return true;
 	}
 	// value already exists, can't add
@@ -40,7 +45,7 @@ bool BST::remove(int data)
 bool BST::deleteNode(Node*& nodeToFind, int key)
 {
 	nodeToFind = SearchBST(nodeToFind, key);
-	
+
 	if(nodeToFind == nullptr)
 	{
 		cerr << "Value: " << key << " not found, failed to delete." << endl;
@@ -80,7 +85,7 @@ bool BST::deleteNode(Node*& nodeToFind, int key)
 			nodeToFind = nullptr;
 			return true;
 		}
-		
+
 		return true;
 	}
 
@@ -104,22 +109,28 @@ void BST::deleteTree(Node*& currentNode)
 }
 
 
-Node* BST::SearchBST(Node*& currentNode, int key)
+Node*& BST::SearchBST(Node*& currentNode, int key)
 {
+	//cout << "Finding " << key << " in tree..." << endl;
+
 	if (currentNode == nullptr)
 	{
-		return nullptr;
+		//cout << "key value not found; returning nullptr" << endl;
+		return currentNode;
 	}
-	else if (key < currentNode->getData())
+	else if (key < currentNode->value)
 	{
+		//cout << "key < currentNode->value; moving left" << endl;
 		return SearchBST(currentNode->left, key);
 	}
-	else if (key > currentNode->getData())
+	else if (key > currentNode->value)
 	{
+		//cout << "key > currentNode->value; moving right" << endl;
 		return SearchBST(currentNode->right, key);
 	}
-	else
+	else // if key == value
 	{
+		//cout << "Node at " << key << " found; returning currentNode" << endl;
 		return currentNode;
 	}
 }

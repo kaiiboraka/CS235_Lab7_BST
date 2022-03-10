@@ -36,6 +36,8 @@ public:
 	*/
 	bool add(int data) override;
 
+	bool insertNode(Node*& nodeToFind, int key);
+
 	/*
 	* Attempts to remove the given int from the BST tree
 	*
@@ -44,16 +46,15 @@ public:
 	*/
 	bool remove(int data) override;
 
-	bool BST::deleteNode(Node*& nodeToFind, int data);
+	bool deleteNode(Node*& nodeToFind, int data);
 	/*
 	* Removes all nodes from the tree, resulting in an empty tree.
 	*/
 	void clear() override;
-	void BST::deleteTree(Node*& currentNode);
+	void deleteTree(Node*& currentNode);
 
 	//bool updateData(Node*& currentNode, int data);
-
-	Node* BST::SearchBST(Node*& currentNode, int key);
+	Node*& SearchBST(Node*& currentNode, int key);
 };
 
 
