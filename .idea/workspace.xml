@@ -13,8 +13,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a32b7070-3a42-4074-a011-75afb8e56d0c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BST.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/BST.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BST.h" beforeDir="false" afterPath="$PROJECT_DIR$/BST.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bst" beforeDir="false" afterPath="$PROJECT_DIR$/bst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,11 +70,6 @@
   </component>
   <component name="RunManager">
     <configuration name="Lab7_BST" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Lab7_BST" TARGET_NAME="Lab7_BST" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Lab7_BST" RUN_TARGET_NAME="Lab7_BST">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>

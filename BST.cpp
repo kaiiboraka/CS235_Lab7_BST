@@ -26,13 +26,28 @@ bool BST::add(int data)
 
 bool BST::insertNode(Node*& nodeToFind, int key)
 {
-	nodeToFind = SearchBST(nodeToFind, key);
+	//nodeToFind = SearchBST(nodeToFind, key);
 	if (nodeToFind == nullptr)
 	{
 		nodeToFind = new Node(key);
-		//cout << "successfully added " << key << " to the tree" << endl;
 		return true;
 	}
+	else
+	{
+		if (key < nodeToFind->value)
+		{
+			return insertNode(nodeToFind->left, key);
+		}
+		else if (key > nodeToFind->value)
+		{
+			return insertNode(nodeToFind->right, key);
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 	// value already exists, can't add
 	return false;
 }
@@ -44,23 +59,21 @@ bool BST::remove(int data)
 
 bool BST::deleteNode(Node*& nodeToFind, int key)
 {
-	nodeToFind = SearchBST(nodeToFind, key);
-
-	if(nodeToFind == nullptr)
+	if (nodeToFind == nullptr)
 	{
 		cerr << "Value: " << key << " not found, failed to delete." << endl;
 		return false;
 	}
-	else if (nodeToFind != nullptr)
+	else if (nodeToFind->value == key)
 	{
 		if (nodeToFind->hasLeft() && nodeToFind->hasRight())
 		{ // yes both
 			Node* largestLeftChild = nodeToFind->left;
-			while (largestLeftChild->right != nullptr)
+			while (largestLeftChild->hasRight())
 			{
 				largestLeftChild = largestLeftChild->right;
 			}
-			nodeToFind->value = largestLeftChild->getData();
+			nodeToFind->value = largestLeftChild->value;
 			deleteNode(nodeToFind->left, nodeToFind->value);
 
 			return true;
@@ -85,8 +98,21 @@ bool BST::deleteNode(Node*& nodeToFind, int key)
 			nodeToFind = nullptr;
 			return true;
 		}
-
-		return true;
+	}
+	else
+	{
+		if (key < nodeToFind->value)
+		{
+			return deleteNode(nodeToFind->left, key);
+		}
+		else if (key > nodeToFind->value)
+		{
+			return deleteNode(nodeToFind->right, key);
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	return false;
@@ -108,29 +134,29 @@ void BST::deleteTree(Node*& currentNode)
 	}
 }
 
-
-Node*& BST::SearchBST(Node*& currentNode, int key)
-{
-	//cout << "Finding " << key << " in tree..." << endl;
-
-	if (currentNode == nullptr)
-	{
-		//cout << "key value not found; returning nullptr" << endl;
-		return currentNode;
-	}
-	else if (key < currentNode->value)
-	{
-		//cout << "key < currentNode->value; moving left" << endl;
-		return SearchBST(currentNode->left, key);
-	}
-	else if (key > currentNode->value)
-	{
-		//cout << "key > currentNode->value; moving right" << endl;
-		return SearchBST(currentNode->right, key);
-	}
-	else // if key == value
-	{
-		//cout << "Node at " << key << " found; returning currentNode" << endl;
-		return currentNode;
-	}
-}
+//
+//Node*& BST::SearchBST(Node*& currentNode, int key)
+//{
+//	//cout << "Finding " << key << " in tree..." << endl;
+//
+//	if (currentNode == nullptr)
+//	{
+//		//cout << "key value not found; returning nullptr" << endl;
+//		return currentNode;
+//	}
+//	else if (key < currentNode->value)
+//	{
+//		//cout << "key < currentNode->value; moving left" << endl;
+//		return SearchBST(currentNode->left, key);
+//	}
+//	else if (key > currentNode->value)
+//	{
+//		//cout << "key > currentNode->value; moving right" << endl;
+//		return SearchBST(currentNode->right, key);
+//	}
+//	else // if key == value
+//	{
+//		//cout << "Node at " << key << " found; returning currentNode" << endl;
+//		return currentNode;
+//	}
+//}

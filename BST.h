@@ -54,7 +54,7 @@ public:
 	void deleteTree(Node*& currentNode);
 
 	//bool updateData(Node*& currentNode, int data);
-	Node*& SearchBST(Node*& currentNode, int key);
+	//Node*& SearchBST(Node*& currentNode, int key);
 };
 
 
